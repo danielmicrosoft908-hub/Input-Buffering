@@ -11,17 +11,13 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          node-version: '24'
+      - uses: actions/checkout@v4
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         id: build
         with:
           sdk: latest
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: Mod
           path: ${{ steps.build.outputs.build-output }}
